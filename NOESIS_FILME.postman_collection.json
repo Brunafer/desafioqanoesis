@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "35579b5f-3e0e-42fd-9d7a-c325b74e5e46",
+		"name": "NOESIS_FILME",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Desafio 2 - Item 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3dcabb27-240c-44c9-bffb-dd0ef67abe05",
+						"exec": [
+							"pm.test(\"Título deve conter: The Social Network\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"The Social Network\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"O ano deve ser: 2010\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"2010\");",
+							"})",
+							"",
+							"",
+							"pm.test(\"Os idiomas são: English, French\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"English, French\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_filme}}/?i={{ID_DO_FILME}}&apikey={{API_KEY}}",
+					"host": [
+						"{{url_filme}}"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "i",
+							"value": "{{ID_DO_FILME}}"
+						},
+						{
+							"key": "apikey",
+							"value": "{{API_KEY}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Desafio 2 - Item 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3dcabb27-240c-44c9-bffb-dd0ef67abe05",
+						"exec": [
+							"pm.test('O resultado deve ser:falso! ', +data.Response, function() {",
+							"  pm.expect(data.Response).to.equal(\"false\");",
+							"  });",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_filme}}/?i={{ID_INEXIS}}&apikey={{KEY_INEX}}",
+					"host": [
+						"{{url_filme}}"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "i",
+							"value": "{{ID_INEXIS}}"
+						},
+						{
+							"key": "apikey",
+							"value": "{{KEY_INEX}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
