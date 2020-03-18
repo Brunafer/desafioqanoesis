@@ -13,18 +13,19 @@
 					"script": {
 						"id": "3dcabb27-240c-44c9-bffb-dd0ef67abe05",
 						"exec": [
-							"pm.test(\"Título deve conter: The Social Network\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"The Social Network\");",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"pm.test(\"Título deve conter:\" +data.Title, function () {",
+							"    pm.expect(data.Title).to.include(\"The Social Network\");",
 							"});",
 							"",
 							"",
-							"pm.test(\"O ano deve ser: 2010\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"2010\");",
+							"pm.test(\"O ano deve ser:\" +data.Year, function () {",
+							"    pm.expect(data.Year).to.include(\"2010\");",
 							"})",
 							"",
-							"",
-							"pm.test(\"Os idiomas são: English, French\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"English, French\");",
+							"pm.test(\"Os idiomas são: \" +data.Language, function () {",
+							"    pm.expect(data.Language).to.include(\"English, French\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -66,7 +67,7 @@
 						"exec": [
 							"var data = JSON.parse(responseBody);",
 							"",
-							"pm.test('O resultado deve ser:falso! ',+data.Response, function() {",
+							"pm.test('O resultado deve ser: filme inexistente! '+data.Response, function() {",
 							"  pm.expect(data.Response).to.equal(\"False\");",
 							"  });",
 							"",
