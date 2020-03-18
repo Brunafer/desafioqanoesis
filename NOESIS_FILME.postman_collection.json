@@ -64,8 +64,10 @@
 					"script": {
 						"id": "3dcabb27-240c-44c9-bffb-dd0ef67abe05",
 						"exec": [
-							"pm.test('O resultado deve ser:falso! ', +data.Response, function() {",
-							"  pm.expect(data.Response).to.equal(\"false\");",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"pm.test('O resultado deve ser:falso! ',+data.Response, function() {",
+							"  pm.expect(data.Response).to.equal(\"False\");",
 							"  });",
 							"",
 							""
